@@ -1,4 +1,4 @@
-import operator, itertools, time
+import numbers, operator, itertools, time
 from random import randint
 from fractions import Fraction
 from colorama import Fore, Style
@@ -66,9 +66,8 @@ print(f'Target: {Fore.YELLOW}{target}{Style.RESET_ALL}\n' +
         f'Using: {Fore.YELLOW}{numbers}{Style.RESET_ALL}\n')
 
 for i, sol in enumerate(sols):
-    print(f"{i + 1}: {Fore.GREEN}{sol}{Style.RESET_ALL}")
-    
-    if i+1 == 1:
-        if input(f"Solution Found in {Fore.BLUE}{round(time.time()-start_time, 2)}s{Style.RESET_ALL}! \nDo you want to continue finding more solutions [y/n]: ") == "n":
-            break
-           
+    print(f"{i + 1}: {Fore.GREEN}{sol[1:-1]}{Style.RESET_ALL}")
+
+    if time.time()-start_time > 30:
+        print(f"\n\nFound {Fore.GREEN}{i + 1}{Style.RESET_ALL} solutions in 30 seconds!")
+        break
